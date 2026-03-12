@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CenoCup Elite v51</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="overlay" id="overlay" onclick="closeAdmin()"></div>
+
+    <div class="container">
+        <header onclick="askAdmin()">
+            <h1>CENO<span>CUP</span></h1>
+            <div class="version-tag">ULTIMATE DATA V51.0</div>
+        </header>
+
+        <div id="admin-panel">
+            <h2 class="ucl-font">PAINEL DE CONTROLO</h2>
+            <div class="admin-top-bar">
+                <div class="epoch-section">
+                    <h4>NOMES DAS ÉPOCAS</h4>
+                    <div id="epoch-name-editor"></div>
+                </div>
+                <div class="admin-btns">
+                    <button onclick="saveAll()" class="btn-save">SALVAR ALTERAÇÕES</button>
+                    <button onclick="closeSeason()" class="btn-danger">ENCERRAR ÉPOCA</button>
+                </div>
+            </div>
+            <div id="editor-rows"></div>
+            <button onclick="addNewPlayer()" class="btn-add">+ NOVO JOGADOR</button>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" id="tab-tabela" onclick="showView('tabela')">TEMPORADA</button>
+            <button class="tab-btn" id="tab-hall" onclick="showView('hall')">HALL DA FAMA</button>
+            <button class="tab-btn" id="tab-ranking" onclick="showView('ranking')">GERAL DETALHADO</button>
+            <button class="tab-btn" id="tab-stats" onclick="showView('stats')">ANALYTICS</button>
+        </div>
+
+        <div id="view-tabela" class="view card">
+            <select id="season-selector" onchange="renderTabela(this.value)"></select>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>FOTO</th><th>TÉCNICO</th><th>J</th><th>V</th><th>E</th><th>D</th><th>GP</th><th>GS</th><th>SG</th><th>PTS</th></tr></thead>
+                    <tbody id="body-tabela"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="view-hall" class="view" style="display:none"></div>
+
+        <div id="view-ranking" class="view card" style="display:none">
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>POS</th><th>TÉCNICO</th><th>PART</th><th>PTS</th><th>J</th><th>V</th><th>E</th><th>D</th><th>GP</th><th>GS</th><th>SG</th><th>APROV</th><th>FORÇA</th></tr></thead>
+                    <tbody id="body-ranking"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="view-stats" class="view" style="display:none">
+            <div class="stats-grid" id="grid-stats"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
